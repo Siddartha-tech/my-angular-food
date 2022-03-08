@@ -8,16 +8,16 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Recipes</a>
+            <a class="nav-link active" aria-current="page" href="#" (click)="onSelect('recipe')">Recipes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Shopping List</a>
+            <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a appDropdown #r="appDropdown" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" [attr.aria-expanded]="r.isOpen">
                 Manage
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <ul [ngClass]="{'show':r.isOpen}" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" [attr.data-bs-popper]="r.isOpen ? 'none' : ''">
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>

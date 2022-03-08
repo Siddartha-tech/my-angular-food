@@ -1,21 +1,21 @@
 <div class="row">
-    <div class="col-xs-12"><img src="" alt="" class="img-responsve"></div>
+    <div class="col-xs-12"><img [src]="recipe.imagePath" alt="" class="img-responsve"></div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h1>Recipe Name</h1>
+        <h1>{{recipe.name}}</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             
-            <div class="btn-group" role="group">
+            <div appDropdown #r="appDropdown" [ngClass]="{'show':r.isOpen}" class="btn-group" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
-                    data-bs-toggle="dropdown" aria-expanded="false">
+                    data-bs-toggle="dropdown" [attr.aria-expanded]="r.isOpen">
                     Manage Recipe
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <ul [ngClass]="{'show':r.isOpen}" class="dropdown-menu" aria-labelledby="btnGroupDrop1" [attr.data-bs-popper]="r.isOpen ? 'none' : ''">
                     <li><a class="dropdown-item" href="#">To Shopping List</a></li>
                     <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
                     <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
@@ -26,7 +26,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        Description
+        {{recipe.description}}
     </div>
 </div>
 <div class="row">
